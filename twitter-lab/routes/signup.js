@@ -4,19 +4,18 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
-/* GET signup page. */
+/* cuando me piden la página del signup... */
 router.get('/', function (req, res, next) {
     res.render('signup', {
         title: 'Express'
     });
 });
 
-/* POST signup page. */
+/* CUANDO ME RELLENAN EL FORM DE SIGNUP */
 router.post("/", (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
-    console.log(username);
-    console.log(password);
+
     if (username === "" || password === "") {
         res.render("signup", {
             message: "Indicate username and password"
@@ -39,8 +38,6 @@ router.post("/", (req, res, next) => {
             username,
             password: hashPass
         });
-        console.log(username);
-        console.log(hashPass);
         newUser.save((err) => {
             if (err) {
                 res.render("auth/signup", {
