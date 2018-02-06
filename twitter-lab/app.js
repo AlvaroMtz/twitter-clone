@@ -16,6 +16,10 @@ const users = require('./routes/users');
 const signup = require('./routes/signup');
 const login = require('./routes/login');
 const tweets = require('./routes/tweetsController');
+
+// const authController     = require("./routes/authController");
+const profileController  = require("./routes/profileController");
+
 const passportConfig = require('./passport')
 const isLogged = require('./middlewares/isLogged');
 const timelineController = require("./routes/timelineController");
@@ -60,8 +64,7 @@ app.use('/signup', signup);
 app.use('/login', login);
 app.use('/tweets', tweets);
 app.use('/tweets', timelineController);
-
-
+app.use("/profile", profileController);
 
 
 // catch 404 and forward to error handler
